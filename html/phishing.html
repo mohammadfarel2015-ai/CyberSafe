@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Phishing Interaktif | CyberSafe</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">CyberSafe</h2>
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="article.html">Artikel</a></li>
+            <li><a href="tips.html">Tips</a></li>
+            <li><a class="active" href="phishing.html">Phishing</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="about.html">Tentang</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="page-header" style="background: linear-gradient(135deg, #ef4444 0%, #0f172a 100%); position: relative; overflow: hidden;">
+        <div style="font-size: 3.5rem; margin-bottom: 15px; color: #fecaca; animation: floating 4s ease-in-out infinite;">
+            <i class="fa-solid fa-user-ninja"></i>
+        </div>
+        <h1>Simulasi Serangan Phishing</h1>
+        <p>Pelajari cara mengenali email dan website palsu melalui laboratorium simulasi interaktif.</p>
+    </section>
+
+    <section class="features">
+        <h2>Dasar Teori Phishing</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fa-solid fa-mask"></i>
+                <h3>Apa itu Phishing?</h3>
+                <p>Bentuk rekayasa sosial (social engineering) yang memanipulasi psikologis korban untuk menyerahkan informasi rahasia secara sukarela dengan menyamar sebagai entitas terpercaya.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Tujuan Phishing</h3>
+                <p>Memanen kredensial akun, mencuri data identitas kependudukan, menguras akun finansial, atau menyusupkan malware ke dalam jaringan internal korporasi/kampus.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h3>Mengapa Berbahaya?</h3>
+                <p>Serangan ini memotong lapisan pertahanan firewall tercanggih sekalipun karena mengeksploitasi kelalaian manusia, yang sering kali menjadi titik terlemah dalam sistem keamanan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="phishing-box" style="padding-top: 0; padding-bottom: 20px;">
+        <div style="background: #ffffff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h3 style="color: #1e293b; margin: 0; font-size: 1.1rem;"><i class="fa-solid fa-gauge-high" style="color: #2563eb; margin-right: 8px;"></i> Skor Kesadaran Keamanan Anda</h3>
+                <p style="color: #64748b; font-size: 0.85rem; margin: 4px 0 0 0;">Selesaikan simulasi email, kuis, dan simulasi web login untuk menaikkan skor.</p>
+            </div>
+            <div style="text-align: right;">
+                <div id="awareness-score" style="font-size: 2.5rem; font-weight: 700; color: #ef4444; line-height: 1;">0%</div>
+                <div id="score-status" style="font-size: 0.8rem; font-weight: 600; color: #ef4444; text-transform: uppercase; margin-top: 5px;">Rentan Serangan</div>
+            </div>
+        </div>
+        <div style="width: 100%; background-color: #e2e8f0; height: 8px; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+            <div id="score-progress" style="width: 0%; height: 100%; background: #ef4444; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+        </div>
+    </section>
+
+    <section class="phishing-box" style="padding-top: 20px;">
+        <h2 style="text-align: left; margin-bottom: 20px;"><i class="fa-solid fa-envelope-open-text" style="color:#2563eb; margin-right:10px;"></i>Laboratorium 1: Analisis Kotak Masuk</h2>
+        <div class="email-box" style="border-left: 4px solid #ef4444; position: relative;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px;">
+                <div style="background: #e0f2fe; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0284c7; font-weight: bold; font-size: 1.2rem;">BI</div>
+                <div>
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1rem;">Bank Indonesia Infocenter</h4>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;"><strong>Dari:</strong> Bank Indonesia &lt;<span style="color:#ef4444; text-decoration: underline;">bank-indonesia@hadiah-gratis.com</span>&gt;</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;"><strong>Subjek:</strong> <span style="font-weight: 600; color: #1e293b;">Selamat! Anda mendapatkan hadiah Rp10.000.000</span></p>
+                </div>
+            </div>
+
+            <div style="color: #334155; font-size: 0.95rem; line-height: 1.7; margin-bottom: 30px;">
+                <p>Kepada Nasabah Yang Terhormat,</p>
+                <p>Kami memberikan apresiasi sebesar <strong>Rp10.000.000</strong> langsung ditransfer ke rekening Anda hari ini sebagai bagian dari program loyalitas nasional kuartal ini.</p>
+                <p style="background: #fff1f2; padding: 10px 15px; border-radius: 6px; border-left: 3px solid #f43f5e; font-size: 0.9rem; color: #9f1239;">
+                    <i class="fa-solid fa-clock"></i> <strong>PENTING:</strong> Klaim harus diselesaikan dalam waktu 10 menit ke depan, atau dana dialihkan ke cadangan hangus.
+                </p>
+                <p>Silakan klik tombol otentikasi aman di bawah untuk mencairkan dana:</p>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn" id="btn-claim-gift" onclick="triggerEmailSimulation()" style="background: #ef4444; color: #ffffff; width: 100%; max-width: 250px; border: none; cursor: pointer;">
+                    Klaim Hadiah
+                </button>
+                <div id="email-loading" style="display: none; color: #64748b; font-size: 0.95rem; font-weight: 500;">
+                    <i class="fa-solid fa-spinner fa-spin" style="color: #2563eb; margin-right: 8px;"></i> Menghubungkan ke server pengirim...
+                </div>
+            </div>
+        </div>
+
+        <div id="phishing-alert-card" style="display: none; background: #fff1f2; border: 1px solid #fecaca; border-radius: 12px; padding: 30px; margin-top: 30px; animation: modalFadeIn 0.5s ease both;">
+            <h3 style="color: #df2828; font-size: 1.35rem; margin-bottom: 15px;"><i class="fa-solid fa-triangle-exclamation"></i> ⚠ Anda Baru Saja Menjadi Korban Simulasi Phishing</h3>
+            <p style="color: #4c0519; font-size: 0.95rem; margin-bottom: 20px;">Jika ini terjadi di dunia nyata, data finansial dan akun perbankan Anda telah jatuh sepenuhnya ke tangan kriminal siber. Berikut adalah tanda bahaya (red flags) yang wajib Anda cermati dari email di atas:</p>
+            
+            <ul style="list-style: none; padding: 0; margin: 0 0 20px 0;">
+                <li style="padding: 8px 0; border-bottom: 1px dashed #fecaca; font-size: 0.95rem; color: #9f1239;"><i class="fa-solid fa-circle-xmark" style="color:#ef4444; margin-right:8px;"></i> <strong>Domain Email Mencurigakan:</strong> Email resmi bank tidak akan menggunakan domain publik gratisan atau nama domain samaran seperti <code>hadiah-gratis.com</code>.</li>
+                <li style="padding: 8px 0; border-bottom: 1px dashed #fecaca; font-size: 0.95rem; color: #9f1239;"><i class="fa-solid fa-circle-xmark" style="color:#ef4444; margin-right:8px;"></i> <strong>Menawarkan Hadiah Berlebihan:</strong> Skema kompensasi finansial instan yang bombastis tanpa verifikasi resmi adalah ciri khas manipulasi penipuan.</li>
+                <li style="padding: 8px 0; border-bottom: 1px dashed #fecaca; font-size: 0.95rem; color: #9f1239;"><i class="fa-solid fa-circle-xmark" style="color:#ef4444; margin-right:8px;"></i> <strong>Mendesak Tindakan Segera:</strong> Menggunakan taktik urgensi palsu (pembatasan waktu 10 menit) untuk mematikan nalar kritis dan memicu kepanikan korban.</li>
+                <li style="padding: 8px 0; border-bottom: 1px dashed #fecaca; font-size: 0.95rem; color: #9f1239;"><i class="fa-solid fa-circle-xmark" style="color:#ef4444; margin-right:8px;"></i> <strong>Mengarahkan ke Link Tidak Jelas:</strong> Tombol klaim menyembunyikan alamat URL palsu yang siap memanen kredensial berharga Anda.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="phishing-box" style="padding-top: 20px; padding-bottom: 20px;">
+        <h2 style="text-align: left; margin-bottom: 20px;"><i class="fa-solid fa-brain" style="color:#2563eb; margin-right:10px;"></i>Laboratorium 2: Pengujian Nalar Analitis</h2>
+        <div class="question" style="margin-bottom: 0;">
+            <h2>Berdasarkan pengamatan seksama terhadap anatomi email "Bank Indonesia Infocenter" di atas, apakah pesan tersebut aman untuk ditindaklanjuti?</h2>
+            
+            <label id="quiz-opt-a">
+                <input type="radio" name="phish-quiz" value="aman" onclick="evaluatePhishQuiz('aman')"> Sangat Aman, karena menggunakan nama instansi resmi "Bank Indonesia".
+            </label>
+            
+            <label id="quiz-opt-b">
+                <input type="radio" name="phish-quiz" value="phishing" onclick="evaluatePhishQuiz('phishing')"> Bahaya (Phishing), karena alamat pengirim, iming-iming hadiah, dan desakan waktu tidak valid.
+            </label>
+
+            <div id="quiz-feedback" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; font-size: 0.95rem; font-weight: 500;"></div>
+        </div>
+    </section>
+
+    <section class="phishing-box" style="padding-top: 20px;">
+        <h2 style="text-align: left; margin-bottom: 20px;"><i class="fa-solid fa-window-restore" style="color:#2563eb; margin-right:10px;"></i>Laboratorium 3: Simulasi Gerbang Log Masuk Palsu</h2>
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; overflow: hidden;">
+            <div style="background: #f8fafc; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 8px;">
+                <div style="display: flex; gap: 6px;">
+                    <span style="width:12px; height:12px; background:#ef4444; border-radius:50%; display:inline-block;"></span>
+                    <span style="width:12px; height:12px; background:#f59e0b; border-radius:50%; display:inline-block;"></span>
+                    <span style="width:12px; height:12px; background:#22c55e; border-radius:50%; display:inline-block;"></span>
+                </div>
+                <div style="background: #eddfe0; color: #ef4444; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; flex: 1; margin-left: 15px; font-family: monospace; display: flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-unlock text-danger"></i> http://login.bi-pencairan-dana.com/auth/secure-login
+                </div>
+            </div>
+
+            <div style="padding: 40px 30px; max-width: 400px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 2.5rem; color: #2563eb; margin-bottom: 10px;"><i class="fa-solid fa-building-columns"></i></div>
+                    <h3 style="color: #1e293b; font-size: 1.25rem; font-weight: 600;">Sistem Integrasi Rekening</h3>
+                    <p style="color: #64748b; font-size: 0.85rem;">Masuk ke akun Anda untuk menyelesaikan sinkronisasi dana</p>
+                </div>
+
+                <form id="fake-login-form" onsubmit="handleFakeLogin(event)">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 6px;">Username / Email Mahasiswa</label>
+                        <input type="text" id="fake-user" required placeholder="Contoh: nim@student.ac.id" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 6px;">Kata Sandi / PIN Transaksi</label>
+                        <input type="password" id="fake-pass" required placeholder="Masukkan kata sandi akun" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none;">
+                    </div>
+                    <button type="submit" class="btn" style="background: #2563eb; color: #ffffff; width: 100%; border-radius: 6px; padding: 12px; border: none; cursor: pointer;">Masuk ke Portal Dana</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-container">
+        <div class="about-card" style="text-align: left;">
+            <h2 style="font-size:1.35rem; margin-bottom: 15px;"><i class="fa-solid fa-list-check" style="color: #2563eb; margin-right: 8px;"></i> Bagaimana Mengenali Phishing?</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Periksa Domain Alamat Asli:</strong> Teliti struktur penulisan nama domain paling belakang.</span></div>
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Jangan Klik Tautan Sembarangan:</strong> Layangkan pointer di atas tautan untuk membaca URL tujuan asli.</span></div>
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Jangan Memberikan Token OTP:</strong> Operator atau bank tidak pernah meminta kode PIN/OTP Anda.</span></div>
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Periksa Enkripsi HTTPS:</strong> Verifikasi keberadaan ikon gembok valid pada browser komputer Anda.</span></div>
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Periksa Alamat Pengirim:</strong> Perhatikan kecocokan antara nama display luar dengan baris sub-email pengirim.</span></div>
+                <div style="display: flex; gap: 12px; align-items: flex-start;"><i class="fa-solid fa-square-check" style="color: #22c55e; font-size: 1.2rem; margin-top: 3px;"></i> <span style="font-size:0.95rem; color:#334155;"><strong>Jangan Tergiur Imbalan:</strong> Selalu asumsikan penawaran hadiah yang terlalu fantastis sebagai modus serangan.</span></div>
+            </div>
+        </div>
+
+        <div class="developer-card" style="text-align: left;">
+            <h2 style="font-size:1.35rem; margin-bottom: 20px;"><i class="fa-solid fa-shield-halved" style="color: #2563eb;"></i> Tips Pencegahan Mutakhir</h2>
+            <div style="margin-bottom: 20px; display: flex; gap: 15px;">
+                <div style="font-size: 1.5rem; color: #2563eb;"><i class="fa-solid fa-key"></i></div>
+                <div>
+                    <h4 style="margin:0 0 4px 0; color:#1e293b;">Aktifkan Multi-Factor Authentication</h4>
+                    <p style="margin:0; font-size:0.85rem; color:#64748b;">Menambahkan kunci keamanan berlapis di luar kata sandi standar.</p>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; gap: 15px;">
+                <div style="font-size: 1.5rem; color: #2563eb;"><i class="fa-solid fa-rotate"></i></div>
+                <div>
+                    <h4 style="margin:0 0 4px 0; color:#1e293b;">Pembaruan Browser Rutin</h4>
+                    <p style="margin:0; font-size:0.85rem; color:#64748b;">Memastikan pangkalan data anti-phishing bawaan penjelajah web selalu terbaharui.</p>
+                </div>
+            </div>
+            <div style="margin-bottom: 0; display: flex; gap: 15px;">
+                <div style="font-size: 1.5rem; color: #2563eb;"><i class="fa-solid fa-user-check"></i></div>
+                <div>
+                    <h4 style="margin:0 0 4px 0; color:#1e293b;">Gunakan Sikap Skeptis Sehat</h4>
+                    <p style="margin:0; font-size:0.85rem; color:#64748b;">Jangan langsung mempercayai lampiran dokumen berkas tanpa konfirmasi kanal sekunder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="popup" class="popup">
+    <div class="popup-content" style="border-top: 6px solid #ef4444;">
+        <div style="font-size: 3.5rem; color: #ef4444; margin-bottom: 15px;">
+            <i class="fa-solid fa-ban"></i>
+        </div>
+        <h2>STOP!</h2>
+        <p style="text-align: left; color: #334155; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Ini hanyalah <strong>simulasi phishing</strong>. Website palsu sering kali dirancang sedemikian rupa agar terlihat sangat identik dengan halaman portal web resmi institusi Anda.
+            <br><br>
+            <strong>Pesan Edukasi:</strong> Jangan pernah memasukkan nama akun, kata sandi, ataupun kode PIN rahasia pada situs web yang alamat URL-nya tidak terpercaya atau tidak menggunakan enkripsi aman.
+        </p>
+        <button class="btn" onclick="closeWarning()" style="background: #ef4444; color: #ffffff; border: none; width: 100%; cursor: pointer;">Mengerti & Selesaikan Simulasi</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <h2>CyberSafe</h2>
+        <p>Website edukasi keamanan digital untuk meningkatkan kesadaran masyarakat terhadap ancaman siber.</p>
+        <div class="footer-icons">
+            <i class="fa-solid fa-shield-halved"></i>
+            <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <p>© Moh. Vicky Ardiansyah | 2402310128 | ICD24</p>
+    </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

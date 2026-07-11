@@ -1,0 +1,906 @@
+/* ==========================================================================
+   1. CORE VARIABLES & DESIGN SYSTEM
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #38bdf8;
+    --dark-bg: #0f172a;
+    --light-bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    
+    /* Elevation & Shadows */
+    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 10px 20px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+    --shadow-lg: 0 20px 25px -5px rgba(37, 99, 235, 0.12), 0 10px 10px -5px rgba(37, 99, 235, 0.04);
+    
+    /* Layout Tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius-lg: 16px;
+    --border-radius-md: 12px;
+    --border-radius-sm: 8px;
+
+    /* Responsive Section Spacing */
+    --section-padding: clamp(48px, 8vw, 96px);
+    --container-width: 1200px;
+}
+
+/* ==========================================================================
+   2. GLOBAL RESET & BASICS (Anti-Horizontal Scroll)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: var(--light-bg);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    line-height: 1.6;
+}
+
+section {
+    padding: var(--section-padding) 5%;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   3. SHARED COMPONENTS & UTILITIES
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 12px 32px;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Fluid Typo Headings Section Underline */
+.about-security h2,
+.importance h2,
+.statistik h2,
+.features h2 {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-bottom: 48px;
+    font-weight: 700;
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    color: var(--dark-bg);
+    letter-spacing: -0.5px;
+}
+
+.about-security h2::after,
+.importance h2::after,
+.statistik h2::after,
+.features h2::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+/* Standard Reusable Grid Systems */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border: 1px solid rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(37, 99, 235, 0.12);
+}
+
+.card i {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.card h3 {
+    color: var(--dark-bg);
+    margin-bottom: 12px;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   4. NAVIGATION SYSTEMS & STICKY HEADER
+   ========================================================================== */
+header {
+    background: var(--dark-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+.logo {
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 32px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    padding: 6px 0;
+    display: inline-block;
+}
+
+.navbar ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Accurate Active Menu Underline Styling */
+.active {
+    color: var(--secondary-color) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 4px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    padding: 4px;
+}
+
+/* ==========================================================================
+   5. HERO ARCHITECTURE (HOME COMPONENT)
+   ========================================================================== */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    max-width: 100%;
+    padding: clamp(60px, 10vw, 120px) 5%;
+    background: linear-gradient(135deg, #1e40af 0%, var(--dark-bg) 100%);
+    color: var(--white);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 580px;
+}
+
+.hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    margin-bottom: 36px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.about-security p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Threat Statistics Configuration */
+.statistik .card h1 {
+    color: var(--primary-color);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.statistik .card p {
+    font-weight: 500;
+    color: var(--dark-bg);
+}
+
+/* Call to Action Framework */
+.cta {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+    color: var(--white);
+    text-align: center;
+    border-radius: var(--border-radius-lg);
+    margin: 40px auto;
+    width: 90%;
+    padding: 60px 40px;
+}
+
+.cta h2 {
+    color: var(--white);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: 24px;
+}
+
+.cta h2::after {
+    display: none;
+}
+
+/* ==========================================================================
+   6. ARTICLE GRID FRAMEWORK
+   ========================================================================== */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: clamp(60px, 8vw, 100px) 20px;
+    width: 100%;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.page-header p {
+    margin-top: 12px;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.articles {
+    padding: 60px 5%;
+}
+
+.article-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(15, 23, 42, 0.02);
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.article-card img {
+    width: 260px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--border-radius-md);
+    flex-shrink: 0;
+}
+
+.article-content {
+    flex: 1;
+}
+
+.article-content h2 {
+    margin-bottom: 12px;
+    color: var(--dark-bg);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.article-content p {
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   7. TIPS ARCHITECTURE
+   ========================================================================== */
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 60px 5%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tip-card {
+    background: var(--white);
+    padding: 48px 36px;
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+.tip-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tip-card i {
+    font-size: 52px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.tip-card h2 {
+    margin-bottom: 14px;
+    font-size: 1.4rem;
+    color: var(--dark-bg);
+    font-weight: 600;
+}
+
+.tip-card p {
+    line-height: 1.65;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   8. INTERACTIVE SIMULATION & PHISHING SYSTEM
+   ========================================================================== */
+.phishing-box {
+    padding: 60px 5%;
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.email-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+/* Modal Popup Framework Layout */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 24px;
+}
+
+.popup-content {
+    background: var(--white);
+    padding: 48px 36px;
+    border-radius: var(--border-radius-lg);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-content h2 {
+    font-size: 1.65rem;
+    color: #ef4444;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.popup-content p {
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   9. QUIZ SYSTEM INTERFACE
+   ========================================================================== */
+.quiz-container {
+    padding: 60px 5%;
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.question {
+    background: var(--white);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.question h2 {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+    color: var(--dark-bg);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.question label {
+    display: block;
+    margin: 14px 0;
+    padding: 14px 20px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.question label:hover {
+    background: #e2e8f0;
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateX(4px);
+}
+
+/* Radio Element Sizing adjustments for Touch Targets */
+.question input[type="radio"] {
+    margin-right: 12px;
+    transform: scale(1.15);
+    vertical-align: middle;
+}
+
+#hasil {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 24px;
+    background: rgba(37, 99, 235, 0.05);
+    border-radius: var(--border-radius-md);
+    border: 1px dashed rgba(37, 99, 235, 0.2);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   10. ABOUT ARCHITECTURE & FOOTER MODULE
+   ========================================================================== */
+.about-container {
+    display: flex;
+    gap: 30px;
+    padding: 60px 5%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-card,
+.developer-card {
+    flex: 1;
+    background: var(--white);
+    padding: 48px 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.about-card {
+    text-align: center;
+}
+
+.about-card i {
+    font-size: 64px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.developer-card h2, 
+.about-card h2 {
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.developer-card p {
+    margin: 14px 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.developer-card p strong {
+    color: var(--dark-bg);
+}
+
+/* Footer UI Block */
+footer {
+    background: var(--dark-bg);
+    color: var(--white);
+    padding: 64px 5% 40px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.footer-content h2 {
+    color: var(--secondary-color);
+    margin-bottom: 16px;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.footer-content p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-icons {
+    margin: 32px 0;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.footer-icons i {
+    font-size: 28px;
+    color: var(--secondary-color);
+    transition: var(--transition-smooth);
+}
+
+.footer-icons i:hover {
+    transform: translateY(-4px);
+    color: var(--white);
+}
+
+.footer-content p:last-child {
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   11. ANIMATIONS ENGINE SYSTEM
+   ========================================================================== */
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ==========================================================================
+   12. THE WORKBENCH RESPONSIVE MEDIA BREAKPOINTS
+   ========================================================================== */
+
+/* --- TABLET LANDSCAPE VIEW (max-width: 992px) --- */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        padding: 80px 5% 60px;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        width: 60%;
+        max-width: 340px;
+    }
+
+    .article-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .article-card img {
+        width: 100%;
+        height: 220px;
+        max-width: 360px;
+    }
+
+    .tips-container,
+    .about-container {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* --- MOBILE PORTRAIT VIEW & HAMBURGER ADAPTATION (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Activate Toggle Controls */
+    }
+
+    /* Absolute Fluid Vertically Stacked Menu Dropdown Rules */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0b111e;
+        padding: 16px 0 28px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 0;
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 14px 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.05rem;
+    }
+    
+    /* Active Link Isolation: Inline Block Highlight Without Fullscreen Stretches */
+    .active {
+        display: inline-block !important;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 2px;
+        width: auto;
+    }
+
+    .hero {
+        padding: 60px 5%;
+        flex-direction: column-reverse;
+    }
+
+    .hero-image img {
+        width: 75%;
+        max-width: 280px;
+    }
+
+    .cta {
+        width: 100%;
+        border-radius: 0;
+        margin: 20px 0 0 0;
+        padding: 48px 20px;
+    }
+
+    .email-box, 
+    .question, 
+    .popup-content {
+        padding: 32px 20px;
+    }
+}
+
+/* --- COMPACT SMARTPHONES FRAMEWORKS (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 14px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .hero-image img {
+        width: 85%;
+    }
+
+    .btn {
+        width: 100%; /* Finger-Friendly Tap Targets fluid transformation */
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    .about-card, 
+    .developer-card {
+        padding: 36px 20px;
+    }
+
+    .article-card img {
+        height: 180px;
+    }
+}
+
+/* --- MICRO COMPACT DEVICES (max-width: 320px) --- */
+@media (max-width: 320px) {
+    .logo {
+        font-size: 19px;
+    }
+
+    .hero h1 {
+        font-size: 1.85rem;
+    }
+
+    .question {
+        padding: 24px 12px;
+    }
+
+    .question label {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================================================
+   ADDITIONAL SIMULATION MICRO-EFFECTS
+   ========================================================================== */
+#fake-login-form input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.question label {
+    border: 1px solid transparent;
+    transition: var(--transition-smooth) !important;
+}
+
+/* Button Pulse/Ripple effect simulator on hover */
+.email-box .btn:hover {
+    animation: buttonPulse 1s infinite alternate;
+}
+
+@keyframes buttonPulse {
+    from { transform: scale(1); box-shadow: var(--shadow-sm); }
+    to { transform: scale(1.03); box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+}
